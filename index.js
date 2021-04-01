@@ -1,6 +1,6 @@
 let soap = require('strong-soap').soap;
 
-let url = 'http://localhost:8080/ws/countries.wsdl';
+let url = 'http://localhost:8080/ws/teams.wsdl';
 
 let options = {};
 
@@ -10,12 +10,75 @@ soap.createClient(
     function(err, client) {
 
         let soapRequestParam = {
-            getCountryRequest: {
-                name: 'Poland'
+            getTeamRequest: {
+                name: 'ASSE'
             }
         };
 
-        client.getCountry(
+        client.getTeam(
+            soapRequestParam, 
+            function(err, result, envelope, soapHeader) {
+
+                console.log(result);
+            }
+        );
+    }
+);
+
+
+soap.createClient(
+    url, 
+    options, 
+    function(err, client) {
+
+        let soapRequestParam = {
+            getPlayerRequest: {
+                name: 'Kylian Mbappé'
+            }
+        };
+
+        client.getPlayer(
+            soapRequestParam, 
+            function(err, result, envelope, soapHeader) {
+
+                console.log(result);
+            }
+        );
+    }
+);
+
+soap.createClient(
+    url, 
+    options, 
+    function(err, client) {
+
+        let soapRequestParam = {
+            getAllTeamRequest: {
+                }
+        };
+
+        client.getAllTeam(
+            soapRequestParam, 
+            function(err, result, envelope, soapHeader) {
+
+                console.log(result);
+            }
+        );
+    }
+);
+
+
+soap.createClient(
+    url, 
+    options, 
+    function(err, client) {
+
+        let soapRequestParam = {
+            getAllPlayerRequest: {
+                }
+        };
+
+        client.getAllPlayer(
             soapRequestParam, 
             function(err, result, envelope, soapHeader) {
 
